@@ -1,0 +1,22 @@
+{
+  "name": "elysiaposttest",
+  "version": "1.0.0",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun run --bun src/index.ts",
+    "dev": "bun run --bun --watch src/index.ts",
+    "build": "bun build ./src/index.ts --outdir ./dist --target bun"
+  },
+  "dependencies": {
+    "elysia": "^1.0.0",
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^20.17.40",
+    "drizzle-kit": "~0.30.6",
+    "typescript": "^5.8.3"
+  }
+}
