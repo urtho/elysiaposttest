@@ -1,12 +1,15 @@
 import { Elysia } from 'elysia';
 
 const app = new Elysia()
-  .post('/test', async ({ body, request }) => {
+  .post('/test', async ({ params, body, set}) => {
+
+
+
     const data = (body as any).data;
-    if (!data) {
-      return {
-        error: 'No data property in body'
-      };
+
+    if (!data || (body as any).data.trim().length === 0) {
+      set.status = 400;
+      return { error: "No data provided for validation" };
     }
 
     // Calculate size of body.data in bytes
