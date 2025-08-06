@@ -11,10 +11,13 @@ const app = new Elysia()
 
     // Calculate size of body.data in bytes
     const dataSize = Buffer.byteLength(JSON.stringify(data));
+    const bodySize = Buffer.byteLength(JSON.stringify(body));
 
     return {
       dataSize: dataSize,
-      unit: 'bytes'
+      bodySize: dataSize,
+      unit: 'bytes',
+      req: JSON.stringify(body)
     };
   })
   .listen(3000);
