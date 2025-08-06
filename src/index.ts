@@ -2,11 +2,18 @@ import { Elysia } from 'elysia';
 
 const app = new Elysia()
   .post('/test', async ({ body, request }) => {
-    // Calculate body size in bytes
-    const bodySize = Buffer.byteLength(JSON.stringify(body));
-    
+    const data = (body as any).data;
+    if (!data) {
+      return {
+        error: 'No data property in body'
+      };
+    }
+
+    // Calculate size of body.data in bytes
+    const dataSize = Buffer.byteLength(JSON.stringify(data));
+
     return {
-      bodySize: bodySize,
+      dataSize: dataSize,
       unit: 'bytes'
     };
   })
